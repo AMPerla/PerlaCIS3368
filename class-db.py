@@ -8,16 +8,16 @@ def create_con(hostname, username, userpw, dbname):
     connection = None
     try:
         connection = mysql.connector.connect(
-            host = hostname
-            user = username
-            password = userpw
+            host = hostname,
+            user = username,
+            password = userpw,
             database = dbname
         )
         print('CON SUCCESS')
-    except: Error as 0:
+    except Error as e:
         print(f'The Error {e} occurred')
     return connection
-conn = create_con('ENTER HOSTNAME HERE', 'admin', 'ENTER DB PW', 'ENTER DBNAME')
+conn = create_con('cis3368spring.c1k04kwms2vg.us-east-1.rds.amazonaws.com', 'admin', 'PerlaDBCIS3368', 'cis3368springDB')
 cursor = conn.cursor(dictionary = True)
 sql = 'SELECT * FROM users'
 cursor.execute(sql)
